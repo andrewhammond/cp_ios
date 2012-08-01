@@ -26,6 +26,8 @@
 @property (nonatomic, assign) IBOutlet UILabel *statusLabel;
 @property (nonatomic, retain) IBOutlet UIButton *acceptContactRequestButton;
 @property (nonatomic, retain) IBOutlet UIButton *declineContactRequestButton;
+@property (strong, nonatomic) UserCardViewController *userCard;
+@property (strong, nonatomic) UserStatusViewController *userStatus;
 
 - (IBAction)acceptButtonAction;
 - (IBAction)declineButtonAction;

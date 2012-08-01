@@ -17,5 +17,6 @@
 @property (nonatomic, strong) NSString *rank;
 
 - (CPSkill *)initFromDictionary:(NSDictionary *)skillDict;
+- (NSString*)description;
 
 @end

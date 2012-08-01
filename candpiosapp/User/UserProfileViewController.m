@@ -13,18 +13,13 @@
 #import "VenueInfoViewController.h"
 #import "GTMNSString+HTML.h"
 #import "UserProfileLinkedInViewController.h"
-
+#import "UserCardViewController.h"
 
 
 @interface UserProfileViewController() <UIWebViewDelegate, UIActionSheetDelegate, GRMustacheTemplateDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, weak) IBOutlet UILabel *checkedIn;
 @property (nonatomic, weak) IBOutlet MKMapView *mapView;
-@property (nonatomic, weak) IBOutlet UIView *userCard;
-@property (nonatomic, weak) IBOutlet UIImageView *cardImage;
-@property (nonatomic, weak) IBOutlet UILabel *cardStatus;
-@property (nonatomic, weak) IBOutlet UILabel *cardNickname;
-@property (nonatomic, weak) IBOutlet UILabel *cardJobPosition;
 @property (nonatomic, weak) IBOutlet UIView *venueView;
 @property (nonatomic, weak) IBOutlet UIButton *venueViewButton;
 @property (nonatomic, weak) IBOutlet UILabel *venueName;
@@ -72,9 +67,6 @@
 @synthesize mapView = _mapView;
 @synthesize user = _user;
 @synthesize userCard = _userCard;
-@synthesize cardImage = _cardImage;
-@synthesize cardStatus = _cardStatus;
-@synthesize cardNickname = _cardNickname;
 @synthesize distanceLabel = _distanceLabel;
 @synthesize venueView = _venueView;
 @synthesize venueViewButton = _venueViewButton;
@@ -98,7 +90,6 @@
 @synthesize payButton = _payButton;
 @synthesize reviewButton = _reviewButton;
 @synthesize goMenuBackground = _goMenuBackground;
-@synthesize cardJobPosition = _cardJobPosition;
 @synthesize isF2FInvite = _isF2FInvite;
 @synthesize othersAtPlace = _othersAtPlace;
 @synthesize templateCounter = _templateCounter;
@@ -122,7 +113,7 @@ static GRMustacheTemplate *postBadgesTemplate;
     return preBadgesTemplate;
 }
 + (GRMustacheTemplate*) postBadgesTemplate {
-    if (!postBadgesTemplate) { 
+    if (!postBadgesTemplate) {
         postBadgesTemplate = [GRMustacheTemplate templateFromResource:@"UserResume-postbadges" bundle:nil error:NULL];
     }
     return postBadgesTemplate;
@@ -164,7 +155,7 @@ static GRMustacheTemplate *postBadgesTemplate;
         self.mapAndDistanceLoaded = NO;
         
         // set the card image to the user's profile image
-        [CPUIHelper profileImageView:self.cardImage
+        [CPUIHelper profileImageView:self.userCard.imageView
                  withProfileImageUrl:self.user.photoURL];
         
         // hide the go menu if this profile is current user's profile
@@ -179,17 +170,6 @@ static GRMustacheTemplate *postBadgesTemplate;
             self.minusButton.alpha = 0.0;
             
         }
-        
-        // update labels
-        // set the labels on the user business card
-        self.cardNickname.text = self.user.nickname;
-        
-        [self setUserStatusWithQuotes:self.user.status];
-        
-        self.cardJobPosition.text = self.user.jobTitle;
-        
-        // set the navigation controller title to the user's nickname
-        self.title = self.user.nickname;  
         
         // don't allow scrolling in the mustache view until it's loaded
         self.resumeWebView.userInteractionEnabled = NO;
@@ -235,6 +215,8 @@ static GRMustacheTemplate *postBadgesTemplate;
         self.venueView.alpha = 0.0;
         self.availabilityView.alpha = 0.0;
         
+        self.userCard.user = self.user;
+        
     }
 }
 
@@ -279,17 +261,24 @@ static GRMustacheTemplate *postBadgesTemplate;
     // set LeagueGothic font where applicable
     [CPUIHelper changeFontForLabel:self.checkedIn toLeagueGothicOfSize:24];
     [CPUIHelper changeFontForLabel:self.resumeLabel toLeagueGothicOfSize:24];
-    [CPUIHelper changeFontForLabel:self.cardNickname toLeagueGothicOfSize:28];
     
     // set the paper background color where applicable
     UIColor *paper = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper-texture.jpg"]];
-    self.userCard.backgroundColor = paper;
     self.resumeView.backgroundColor = paper;
     self.resumeWebView.opaque = NO;
     self.resumeWebView.backgroundColor = paper;
+
+    // add the user card
+    self.userCard =[[UserCardViewController alloc] initWithNibName:@"UserCardViewController" bundle:nil];
+    CGFloat margin = (self.view.bounds.size.width - self.userCard.view.bounds.size.width) / 2;
+    self.userCard.view.frame = CGRectMake(margin,
+                                          margin,
+                                          self.userCard.view.frame.size.width,
+                                          self.userCard.view.frame.size.height);
+    [self.scrollView addSubview:self.userCard.view];
     
     // make sure there's a shadow on the userCard and resumeView
-    [CPUIHelper addShadowToView:self.userCard color:[UIColor blackColor] offset:CGSizeMake(2, 2) radius:3 opacity:0.38];
+    [CPUIHelper addShadowToView:self.userCard.view color:[UIColor blackColor] offset:CGSizeMake(2, 2) radius:3 opacity:0.38];
     [CPUIHelper addShadowToView:self.resumeView color:[UIColor blackColor] offset:CGSizeMake(2, 2) radius:3 opacity:0.38];
 }
 
@@ -324,9 +313,6 @@ static GRMustacheTemplate *postBadgesTemplate;
     [self setCheckedIn:nil];
     [self setMapView:nil];
     [self setUserCard:nil];
-    [self setCardImage:nil];
-    [self setCardStatus:nil];
-    [self setCardNickname:nil];
     [self setVenueView:nil];
     [self setVenueViewButton:nil];
     [self setVenueName:nil];
@@ -442,12 +428,12 @@ static GRMustacheTemplate *postBadgesTemplate;
     }
 }
 
-- (void)setUserStatusWithQuotes:(NSString *)status
-{
-    if ([self.user.status length] > 0 && self.user.checkedIn) {
-        self.cardStatus.text = [NSString stringWithFormat:@"\"%@\"", status];
-    }
-}
+//- (void)setUserStatusWithQuotes:(NSString *)status
+//{
+//    if ([self.user.status length] > 0 && self.user.checkedIn) {
+//        self.cardStatus.text = [NSString stringWithFormat:@"\"%@\"", status];
+//    }
+//}
 
 - (void)placeUserDataOnProfile
 {    
@@ -455,16 +441,10 @@ static GRMustacheTemplate *postBadgesTemplate;
     // dismiss the SVProgressHUD if it's up
     [SVProgressHUD dismiss];
     
-    [CPUIHelper profileImageView:self.cardImage
-             withProfileImageUrl:self.user.photoURL];
-    self.cardNickname.text = self.user.nickname;
-
-    self.title = self.user.nickname;  
-
-    self.cardJobPosition.text = self.user.jobTitle;
+    // TODO move this to checkin info
+    //[self setUserStatusWithQuotes:self.user.status];
+    self.userCard.user = self.user;
     
-    [self setUserStatusWithQuotes:self.user.status];
-        
     // if the user has an hourly rate then put it, otherwise it comes up as N/A
     if (self.user.hourlyRate) {
         self.resumeRate.text = self.user.hourlyRate;

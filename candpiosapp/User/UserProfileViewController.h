@@ -10,11 +10,12 @@
 #import <MapKit/MapKit.h>
 #define kRequestToAddToMyContactsActionSheetTitle @"Request to exchange contact info?"
 
+@class UserCardViewController;
 @interface UserProfileViewController : UIViewController
 
 @property (nonatomic, strong) User *user;
 @property (assign, nonatomic) BOOL isF2FInvite;
-
+@property (strong, nonatomic) UserCardViewController *userCard;
 - (IBAction)f2fInvite;
 - (void)placeUserDataOnProfile;
 

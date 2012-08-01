@@ -16,6 +16,11 @@
 #import "CPVenue.h"
 #import "CPSoundEffectsManager.h"
 #import "OneOnOneChatViewController.h"
+#import "UserCardViewController.h"
+#import "UserStatusViewController.h"
+
+#define kCellMargin 5
+#define kStatusTopMargin 2
 
 @interface UserListTableViewController()
 
@@ -201,7 +206,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 130;
+    return 142;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -272,6 +277,28 @@
     } else{
         cell.rightStyle = CPUserActionCellSwipeStyleQuickAction;
     }
+    
+
+    if (!cell.userCard) {
+        cell.userCard = [[UserCardViewController alloc] initWithNibName:@"UserCardViewController" bundle:nil];
+        cell.userCard.view.frame = CGRectOffset(cell.userCard.view.bounds,
+                                                (cell.bounds.size.width - cell.userCard.view.bounds.size.width)/2,
+                                                kCellMargin);
+        [cell.contentView addSubview:cell.userCard.view];
+    }
+    cell.userCard.user = cell.user;
+    if (!cell.userStatus) {
+        cell.userStatus = [[UserStatusViewController alloc] initWithNibName:@"UserStatusViewController" bundle:nil];
+        cell.userStatus.view.frame = CGRectOffset(cell.userStatus.view.bounds,
+                                                  (cell.bounds.size.width - cell.userStatus.view.bounds.size.width)/2,
+                                                  cell.userCard.view.bounds.size.height + kCellMargin + kStatusTopMargin);
+        [cell.contentView addSubview:cell.userStatus.view];
+    }
+    cell.userStatus.user = cell.user;
+    [cell.user loadUserResumeData:^(NSError *error) {
+        cell.userStatus.user = cell.user;
+        cell.userCard.user = cell.user;
+    }];
     return cell;
 }
 

@@ -10,6 +10,8 @@
 #import "CPUserActionCell.h"
 
 @class UserTableViewCell;
+@class UserStatusViewController;
+@class UserCardViewController;
 
 @interface UserTableViewCell : CPUserActionCell
 
@@ -22,5 +24,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *checkInCountLabel;
 @property (nonatomic, retain) IBOutlet UIImageView *profilePictureImageView;
 
+@property (strong, nonatomic) UserStatusViewController *userStatus;
+@property (strong, nonatomic) UserCardViewController *userCard;
 
 @end

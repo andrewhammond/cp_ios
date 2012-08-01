@@ -51,4 +51,16 @@
     _rank = [rank isKindOfClass:[NSNull class]] ? nil : rank;
 }
 
+- (NSString*)description {
+    NSString *description = [NSString stringWithFormat:@"%@ ", self.name];
+    if (self.loveCount) {
+        description = [description stringByAppendingFormat:@"(%d) ", self.loveCount];
+    }
+    if (self.rank) {
+        description = [description stringByAppendingString:self.rank];
+    }
+    return description;
+}
+
+
 @end

@@ -22,56 +22,6 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </mapView>
-                                    <view contentMode="scaleToFill" id="4sO-iN-dSk">
-                                        <rect key="frame" x="10" y="12" width="300" height="100"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" id="YYK-m8-Qs3">
-                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="BY4-Xc-W3h">
-                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    </imageView>
-                                                </subviews>
-                                                <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" id="RvQ-fl-grj">
-                                                <rect key="frame" x="112" y="10" width="184" height="76"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <subviews>
-                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.75" contentMode="left" text="Nickname" lineBreakMode="wordWrap" minimumFontSize="14" id="fNT-rf-hZW">
-                                                        <rect key="frame" x="0.0" y="27" width="164" height="36"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                        <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                        <color key="shadowColor" red="1" green="1" blue="1" alpha="0.51000000000000001" colorSpace="calibratedRGB"/>
-                                                        <size key="shadowOffset" width="1" height="1"/>
-                                                    </label>
-                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="wordWrap" numberOfLines="2" minimumFontSize="10" id="dmg-aI-gZM">
-                                                        <rect key="frame" x="0.0" y="0.0" width="184" height="33"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="z8B-Oo-5be">
-                                                        <rect key="frame" x="0.0" y="61" width="184" height="15"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                            </view>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                    </view>
                                     <view contentMode="scaleToFill" id="iyh-jY-Kag">
                                         <rect key="frame" x="10" y="120" width="145" height="130"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -168,6 +118,17 @@
                                                         <color key="textColor" red="0.94901960780000005" green="0.94509803920000002" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <view clipsSubviews="YES" userInteractionEnabled="NO" tag="1005" contentMode="scaleToFill" id="sFK-iJ-byY">
+                                                        <rect key="frame" x="0.0" y="-118" width="75" height="279"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <subviews>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="go-menu-bg.png" id="ilO-4E-RSP">
+                                                                <rect key="frame" x="0.0" y="244" width="75" height="279"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                                             </view>
@@ -262,17 +223,6 @@
                                     </view>
                                 </subviews>
                             </scrollView>
-                            <view clipsSubviews="YES" userInteractionEnabled="NO" tag="1005" contentMode="scaleToFill" id="sFK-iJ-byY">
-                                <rect key="frame" x="10" y="93" width="75" height="279"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="go-menu-bg.png" id="ilO-4E-RSP">
-                                        <rect key="frame" x="0.0" y="244" width="75" height="279"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
                             <button opaque="NO" tag="1006" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LRq-df-2Bf" userLabel="Button - Pay user">
                                 <rect key="frame" x="9" y="331" width="75" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -370,10 +320,6 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="availabilityView" destination="XaK-o6-7Ia" id="qZt-2H-pC3"/>
-                        <outlet property="cardImage" destination="BY4-Xc-W3h" id="2AP-g7-c4Q"/>
-                        <outlet property="cardJobPosition" destination="z8B-Oo-5be" id="4j3-nw-p9B"/>
-                        <outlet property="cardNickname" destination="fNT-rf-hZW" id="GTw-0q-HBX"/>
-                        <outlet property="cardStatus" destination="dmg-aI-gZM" id="vb9-WU-yiI"/>
                         <outlet property="chatButton" destination="os7-GP-Tu2" id="3jd-N6-IEc"/>
                         <outlet property="checkedIn" destination="DNg-QG-j4b" id="G8u-I3-07j"/>
                         <outlet property="distanceLabel" destination="jCv-cB-4k0" id="TW8-Gp-5E0"/>
@@ -392,7 +338,6 @@
                         <outlet property="resumeWebView" destination="i0u-vy-O1G" id="isH-u2-FQA"/>
                         <outlet property="reviewButton" destination="mO5-jG-n0T" id="Jih-dI-9Kx"/>
                         <outlet property="scrollView" destination="FvT-cB-xLT" id="pcL-ZE-SlX"/>
-                        <outlet property="userCard" destination="4sO-iN-dSk" id="fec-rS-lGF"/>
                         <outlet property="venueAddress" destination="kT2-bI-cY7" id="3wb-Dv-biX"/>
                         <outlet property="venueName" destination="x2C-Ym-EYT" id="IxR-RK-TKc"/>
                         <outlet property="venueOthers" destination="vkZ-9K-iRU" id="MIl-ds-iqI"/>
@@ -889,7 +834,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="available-for-icon.png" width="16" height="16"/>
+        <image name="available-for-icon.png" width="9" height="9"/>
         <image name="chat-bubble-left-bottom.png" width="261" height="14"/>
         <image name="chat-bubble-left-middle.png" width="261" height="13"/>
         <image name="chat-bubble-left-top.png" width="261" height="14"/>
